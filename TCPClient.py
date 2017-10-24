@@ -1,5 +1,7 @@
 from socket import *
+import pancake as p
 serverName = ''
+serverName = raw_input()
 serverPort = 12000
 clientSocket = socket(AF_INET, SOCK_STREAM)	
 clientSocket.connect((serverName,serverPort))

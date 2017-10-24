@@ -10,6 +10,4 @@ for z in range(0,2):
     for theta in range(0,6):
         sdp.set_val(1,theta,z,R())
 
-
-sdp.set_val(0,0,1,100)
 sdp.print_cake()
