@@ -6,7 +6,7 @@ class Pancake:
 
     def get_val(self,r,theta,z):
         if z==0:
-           if (r == 1 ):
+           if (r == 1):
                 return self.Bottom_Pancake.get_val(theta)
            elif (r ==0):
                 return self.Bottom_Pancake.center
@@ -31,14 +31,20 @@ class Pancake:
            else:
                 raise ValueError('This is a unit pancake radius is 0 or 1')
         elif(z==1):
-            if( r == 0):
+            if( r == 1):
                 self.Top_Pancake.set_val(theta,value)
-            elif (r == 1):
-                return self.Top_Pancake.center
+            elif (r == 0):
+                return self.Top_Pancake.set_center(value)
             else:
                 raise ValueError('This is a unit pancake radius is 0 or 1')
         else:
             raise ValueError('Pancakes are short, and therefore only one high')
+
+    def print_cake(self):
+        print "Top: "
+        self.Top_Pancake.print_layer()
+        print "Bottom: "
+        self.Bottom_Pancake.print_layer()
 
 #this is a circular array with a center element:
 class layer_array:
@@ -70,3 +76,11 @@ class layer_array:
 
     def set_center(self,value):
         self.list[self.center] = value
+
+    def print_layer(self):
+        print "Edge: "
+        for item in range(self.size - 1):
+            print self.list[item]
+        print "Center: "
+        print self.list[self.center]
+        print "\n"
