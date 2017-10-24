@@ -49,31 +49,21 @@ class layer_array:
         self.list = []
         for i in range(self.size):
             self.list.append(self.value)
-        self.center = self.size / 2
+        self.center = self.size - 1
 
     #these are kosher pancakes
     def make_kosher(self,index):
         #make it circlular
-        index = index % self.size
+        index = index % (self.size - 1)
         return index
     
     def get_val(self,index):
         index = self.make_kosher(index)
-        #make sure it is not the center value 
-        if index == self.center:
-            #can't refrance the center from the edge 
-            self.get_val(index+1)
-        else:
-          return self.list[index]
+        return self.list[index]
 
     def set_val(self,index,value):
         index = self.make_kosher(index)
-        #make sure it is not the center value 
-        if index == self.center:
-            #can't refrance the center from the edge 
-            self.get_val(index+1)
-        else:
-            self.list[index] = value 
+        self.list[index] = value 
 
     def return_center(self):
         return self.list[self.center]
