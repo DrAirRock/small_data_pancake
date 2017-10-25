@@ -1,17 +1,29 @@
 from socket import *
 import pancake as p
+import randomcake as rc
+#server name
 serverName = ''
-serverName = raw_input()
+#get server Ip from user
+serverName = raw_input("Enter ip:")
 serverPort = 12000
-clientSocket = socket(AF_INET, SOCK_STREAM)	
+clientSocket = socket(AF_INET, SOCK_STREAM)
 clientSocket.connect((serverName,serverPort))
-
-while 1:
-	sentence = raw_input('Input lowercase sentence:')
-	clientSocket.send(sentence)	
-	modifiedSentence = clientSocket.recv(1024)
-	print 'From Server:', modifiedSentence
-  
+#make a random pancake
+sdp = rc.random_pancake()
+#print cake before sending it over wire
+print "Before Seding"
+sdp.print_cake
+modified_pancake_string = ''
+#container to hold the modified pancake
+modified_pancake = p.Pancake()
+pancake_string = sdp.to_string()
+print "client pancake string"
+print pancake_string
+#while 1:
+clientSocket.send(pancake_string)
+modified_pancake_string = clientSocket.recv(1024)
+modified_pancake.from_string(modified_pancake_string)
+modified_pancake.print_cake()
 clientSocket.close()
 
 

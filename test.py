@@ -1,13 +1,14 @@
-import pancake as p
-import random as r
+import pancake as p 
+import randomcake as rc  
 
-def R():
-    return r.randint(0,10)
-
-sdp = p.Pancake()
-for z in range(0,2):
-    sdp.set_val(0,0,z,R())
-    for theta in range(0,6):
-        sdp.set_val(1,theta,z,R())
-
+sdp = rc.random_pancake()
+print "pancake print"
 sdp.print_cake()
+p_string = sdp.to_string()
+print "string print"
+print p_string
+test_p = p.Pancake()
+print "test pancake"
+test_p.print_cake()
+test_p.from_string(p_string)
+test_p.print_cake()

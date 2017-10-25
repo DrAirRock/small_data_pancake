@@ -45,6 +45,27 @@ class Pancake:
         self.Top_Pancake.print_layer()
         print "Bottom: "
         self.Bottom_Pancake.print_layer()
+    
+    def to_string(self):
+        Pancake_array = []
+        Pancake_array.append(self.Top_Pancake.to_string())
+        Pancake_array.append(self.Bottom_Pancake.to_string())
+        print Pancake_array
+        return str(Pancake_array)
+
+    def from_string(self, Pancake_string): 
+        Pancake_array = Pancake_string.split(',')
+        Top_p = Pancake_array[:self.Top_Pancake.get_size()]
+        for index in range(len(Top_p)-1): 
+            self.Top_Pancake.set_val(index,Top_p[index])
+        self.Top_Pancake.set_center(Top_p[self.Top_Pancake.get_size()-1])
+
+        Bottom_p= Pancake_array[self.Bottom_Pancake.get_size():]
+        for index in range(len(Bottom_p)-1):
+            self.Bottom_Pancake.set_val(index,Bottom_p[index])
+        self.Bottom_Pancake.set_center(Bottom_p[self.Bottom_Pancake.get_size()-1])
+
+        
 
 #this is a circular array with a center element:
 class layer_array:
@@ -84,3 +105,9 @@ class layer_array:
         print "Center: "
         print self.list[self.center]
         print "\n"
+
+    def get_size(self):
+        return self.size
+    
+    def to_string(self):
+        return str(self.list)
