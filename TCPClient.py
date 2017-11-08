@@ -12,7 +12,7 @@ clientSocket.connect((serverName,serverPort))
 sdp = rc.random_pancake()
 #print cake before sending it over wire
 print "Before Seding"
-sdp.print_cake
+sdp.print_cake()
 modified_pancake_string = ''
 #container to hold the modified pancake
 modified_pancake = p.Pancake()
