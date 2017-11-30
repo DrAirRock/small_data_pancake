@@ -45,7 +45,40 @@ class Pancake:
         self.Top_Pancake.print_layer()
         print "Bottom: "
         self.Bottom_Pancake.print_layer()
-    
+
+    def grow(self, grow_number): 
+        center_top = self.Top_Pancake.return_center()
+        center_bottom = self.Bottom.return_center() 
+        size_top = self.Top_Pancake.get_size()
+        size_bottom = self.Bottom_Pancake.get_size() 
+        size_top += grow_number
+        size_bottom += grow_number
+        self.Top_Pancake.set_size(size_top)
+        self.Bottom_Pancake.set_size(size_bottom)
+        self.Top_Pancake.set_center(center)
+        self.Bottom_Pancake.set_center(center)
+        
+    def glution_free(self, value): 
+        if value > 0:
+            return true
+        else: 
+            return false
+
+    def shrink(selg, shrink_number):
+        center_top = self.Top_Pancake.return_center()
+        center_bottom = self.Bottom.return_center() 
+        size_top = self.Top_Pancake.get_size()
+        size_bottom = self.Bottom_Pancake.get_size() 
+        size_top -= grow_number
+        size_bottom -= grow_number
+        if (glution_free(size_top)): 
+            self.Top_Pancake.set_size(size_top)
+            self.Bottom_Pancake.set_size(size_bottom)
+            self.Top_Pancake.set_center(center)
+            self.Bottom_Pancake.set_center(center)
+        else: 
+            raise ValueError("okay panckaes have to be Gluttion free (you pancake be too small)")
+
     def to_string(self):
         Pancake_array = []
         Pancake_array.append(self.Top_Pancake.to_string())
@@ -108,6 +141,9 @@ class layer_array:
 
     def get_size(self):
         return self.size
-    
+
+    def set_size(self, value): 
+        self.size = value; 
+
     def to_string(self):
         return str(self.list)
