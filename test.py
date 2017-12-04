@@ -22,3 +22,20 @@ test_p.set_val(0,0,0,5000)
 test_p.print_cake()
 print "yo :"
 print test_p.get_val(1,25,0)
+
+
+new_grow = p.Pancake
+print "meow"
+test_p.print_cake()
+print "cake"
+
+print "-----------------------------------------"
+        
+test_p.grow(10)
+
+print "after grow"
+test_p.print_cake()
+#print test_p.get_val(0,0,0)
+print " val"
+print test_p.get_val(0,0,1)
+print "val 2"

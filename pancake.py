@@ -9,14 +9,14 @@ class Pancake:
            if (r == 1):
                 return self.Bottom_Pancake.get_val(theta)
            elif (r ==0):
-                return self.Bottom_Pancake.center
+                return self.Bottom_Pancake.return_center()
            else:
                 raise ValueError('This is a unit pancake radius is 0 or 1')
         elif z==1:
             if( r == 1):
                 return self.Top_Pancake.get_val(theta)
             elif( r==0):
-                return self.Top_Pancake.return_center
+                return self.Top_Pancake.return_center()
             else:
                 raise ValueError('This is a unit pancake radius is 0 or 1')
         else:
@@ -48,18 +48,26 @@ class Pancake:
 
     def grow(self, grow_number): 
         center_top = self.Top_Pancake.return_center()
-        center_bottom = self.Bottom.return_center() 
+        center_bottom = self.Bottom_Pancake.return_center() 
+       # print center_top
+      #  print center_bottom
         size_top = self.Top_Pancake.get_size()
         size_bottom = self.Bottom_Pancake.get_size() 
         size_top += grow_number
         size_bottom += grow_number
         self.Top_Pancake.set_size(size_top)
         self.Bottom_Pancake.set_size(size_bottom)
-        self.Top_Pancake.set_center(center)
-        self.Bottom_Pancake.set_center(center)
-        
+        self.Top_Pancake.resize(grow_number , 1)
+        self.Bottom_Pancake.resize(grow_number, 1)
+        self.Top_Pancake.redefine_center(size_top-1)
+        self.Bottom_Pancake.redefine_center(size_bottom-1)
+        self.Top_Pancake.set_center(center_top)
+        self.Bottom_Pancake.set_center(center_bottom)
+        print self.Top_Pancake.return_center()
+        print self.Bottom_Pancake.return_center()  
+
     def glution_free(self, value): 
-        if value > 0:
+        if value > 2:
             return true
         else: 
             return false
@@ -74,6 +82,8 @@ class Pancake:
         if (glution_free(size_top)): 
             self.Top_Pancake.set_size(size_top)
             self.Bottom_Pancake.set_size(size_bottom)
+            self.Top_Pancake.redefine_center(size_top-1)
+            self.Bottom_Pancake.redefine_center(size_bottom-1)
             self.Top_Pancake.set_center(center)
             self.Bottom_Pancake.set_center(center)
         else: 
@@ -110,6 +120,18 @@ class layer_array:
         for i in range(self.size):
             self.list.append(self.value)
         self.center = self.size - 1
+
+
+    def redefine_center(self, value): 
+        self.center = value
+
+    def resize(self, value, direction): 
+        if direction == 1: 
+            for i in range(value): 
+                #print i
+                self.list.append(0)
+        else: 
+            ()
 
     #these are kosher pancakes
     def make_kosher(self,index):
