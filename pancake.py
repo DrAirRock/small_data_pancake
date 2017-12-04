@@ -66,26 +66,22 @@ class Pancake:
         print self.Top_Pancake.return_center()
         print self.Bottom_Pancake.return_center()  
 
-    def glution_free(self, value): 
-        if value > 2:
-            return true
-        else: 
-            return false
 
-    def shrink(selg, shrink_number):
+
+    def shrink(self, shrink_number):
         center_top = self.Top_Pancake.return_center()
-        center_bottom = self.Bottom.return_center() 
+        center_bottom = self.Bottom_Pancake.return_center() 
         size_top = self.Top_Pancake.get_size()
         size_bottom = self.Bottom_Pancake.get_size() 
-        size_top -= grow_number
-        size_bottom -= grow_number
-        if (glution_free(size_top)): 
+        size_top -= shrink_number
+        size_bottom -= shrink_number
+        if (1 == self.Top_Pancake.g_free(size_top) and 1 == self.Bottom_Pancake.g_free(size_bottom)): 
             self.Top_Pancake.set_size(size_top)
             self.Bottom_Pancake.set_size(size_bottom)
             self.Top_Pancake.redefine_center(size_top-1)
             self.Bottom_Pancake.redefine_center(size_bottom-1)
-            self.Top_Pancake.set_center(center)
-            self.Bottom_Pancake.set_center(center)
+            self.Top_Pancake.set_center(center_top)
+            self.Bottom_Pancake.set_center(center_bottom)
         else: 
             raise ValueError("okay panckaes have to be Gluttion free (you pancake be too small)")
 
@@ -121,6 +117,11 @@ class layer_array:
             self.list.append(self.value)
         self.center = self.size - 1
 
+    def g_free(self,value): 
+        if value > 2:
+            return 1
+        else: 
+            return 0
 
     def redefine_center(self, value): 
         self.center = value

@@ -39,3 +39,6 @@ test_p.print_cake()
 print " val"
 print test_p.get_val(0,0,1)
 print "val 2"
+
+test_p.shrink(14)
+test_p.print_cake()
